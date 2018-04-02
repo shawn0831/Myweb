@@ -1,0 +1,15 @@
+		.bg-star{
+			background:url(images/background/star-bg3.png) center center repeat;
+			width:100%;
+			height:100%;
+			opacity:.2;
+			position:absolute;
+			top:0;
+			animation:shine 2s linear infinite alternate;
+			z-index:0;
+		}
+		@keyframes shine{
+			to{
+				opacity:1;
+			}
+		}

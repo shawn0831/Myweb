@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>個人資料</title>
+	<link rel="stylesheet" href="navbar.css">
+	<link rel="stylesheet" href="button.css">
+
+	<style>
+		body{
+			background:url(images/background/abstract-1963838.jpg) center center;
+			background-size:cover;
+		}
+		.container{
+			background:rgba(0,0,0,.5);
+		}
+		@media screen and (max-width:768px){
+			body{
+				background:url(images/background/abstract-1963838.jpg);
+				background-size:cover;
+			}
+			.container{
+				background:rgba(0,0,0,.5);
+			}
+		}
+
+		.lightLine{
+			border:1px solid rgba(255,255,255,1);
+			width:100%;
+		}
+		
+		section{
+			width:80%;
+			margin:auto;
+			display:flex;
+			flex-direction:column;
+			flex-wrap:wrap;
+			align-items:center;
+			justify-content:center;
+			padding:100px 0 80px;
+		}
+		.profile{
+			width:65%;
+			min-width:800px;
+			margin-bottom:60px;
+		}
+		.profile img{
+			width:100%;
+			box-shadow:0 0 60px #fff;
+		}
+
+		.profile2{
+			width:100%;
+			color:#fff;
+			text-align:center;
+			display:none;
+		}
+		.myPhoto{
+			width:50%;
+			margin:auto;
+			min-width:250px;
+		}
+		.myPhoto img{
+			width:100%;
+			margin-top:20px;
+		}
+
+		.box{
+			margin-bottom:100px;
+			position:relative;
+		}
+		.box p{
+			margin-top:10px;
+		}
+		.icon{
+			width:40%;
+		}
+		.margin{
+			margin-top:20px;
+		}
+		.bird{
+			/* filter:drop-shadow(0 0 10px #fff); */
+			/*margin-top:30px;*/
+			margin-top:20px;
+		}
+		/*.bird:hover{
+			filter:drop-shadow(0 0 20px #fff);
+		}*/
+
+		@media screen and (max-width:768px){
+			.profile{
+				display:none;
+			}
+			.profile2{
+				display:initial;
+			}
+		}
+
+		.button-wrap0{
+			display:initial;
+		}
+		@media screen and (max-width:768px){
+			.button-wrap0{
+			display:initial;
+			}
+		}
+		.button-wrap1{
+			background:linear-gradient(to left top,#fff,#000);
+			box-shadow:0 0 30px #fff;
+		}
+		.button-wrap0:hover .button-wrap1{
+			box-shadow:0 0 60px #fff;
+		}
+		.button-wrap0:active .button-wrap1{
+			box-shadow:0 0 0px #fff;
+			position:relative;
+			top:5px;
+		}
+		.button p{
+			margin-top:0px;
+		}
+
+		.home{
+			width:150px;
+			height:150px;
+			background:#fff;
+			position:relative;
+			box-shadow:5px 5px 10px 0px;
+			perspective:1000px;
+			transform:rotate3d(0,0,1,30deg);
+			cursor:pointer;
+		}
+		.home:hover{
+			box-shadow:10px 10px 10px 0px;
+		}
+		@media screen and (min-width:1680px){
+			.home{
+			width:200px;
+			height:200px;
+			}
+		}
+		@media screen and (max-width:768px){
+			.home{
+			display:none;
+			}
+		}
+		.house{
+			width:100%;
+			height:100%;
+			object-fit:contain;
+		}
+		.tape{
+			width:100%;
+			position:absolute;
+			top:-50px;
+		}
+
+	</style>
+</head>
+<body>
+		<div class="container">
+
+			<header>
+				<figure class="brand">
+					<a href="index.html">
+						<img src="images/icon/logo.png" alt="Shawn的作品集" title="我是logo">
+					</a>
+				</figure>
+
+				<nav class="navbar">
+					<a href="pic.html">繪圖<div class="line"></div></a>
+					<a href="photo.html">相片<div class="line"></div></a>
+					<a href="profile.html">個人資料<div class="lightLine"></div></a>
+				</nav>
+
+				<nav class="collapse">
+					<span class="collapse-icon"></span>
+					<span class="collapse-icon"></span>
+					<span class="collapse-icon"></span>
+				</nav>
+
+				<div class="collapse-menu">
+						<a href="pic.html"><p>繪圖</p></a>
+						<a href="photo.html"><p>相片</p></a>
+						<a href="profile.html"><p>個人資料</p><div class="lightLine"></div></a>
+				</div>
+			</header>
+
+			<section>
+				<figure class="profile">
+					<img src="images/protfolio2.png" alt="">
+				</figure>
+
+				<div class="profile2">
+
+					<div class="box">
+						<h2>網站作者</h2>
+						<p>Shawn Chang</p><p>(張登翔)</p>
+						<figure class="myPhoto">
+							<img src="images/mypic/mypic2.jpg" alt="">
+						</figure>
+					</div>
+					
+					<div class="box">
+						<h2>專長</h2>
+						<p>網頁設計</p>
+						<img class="icon bird" src="images/icon/eye_bold.png" alt="">
+					</div>
+					
+					<div class="box">
+						<h2>經歷</h2>
+						<p>資策會UI/UX就業專長養成班</p>
+						<img class="icon margin" src="images/icon/star_bold.png" alt="">
+					</div>
+					
+					<div class="box">
+						<h2>使用軟體</h2>
+						<p>Photoshop Illustrator</p>
+						<img class="icon margin" src="images/icon/ps.png" alt="">
+					</div>
+					
+					<div class="box">
+						<h2>使用技能</h2>
+						<p>HTML CSS Javascrip Bootstrap AJAX PHP MySQL</p>
+						<img class="icon margin" src="images/icon/css.png" alt="">
+					</div>
+					
+					<div class="box">
+							<h2>Email</h2>
+					<p>henrya35514123 @ gmail.com</p>
+					</div>
+
+				</div>
+
+				<a href="index.html" class="button-wrap0">
+					<div class="button button-wrap1">
+						<div class="button button-wrap2">
+							<div class="button button-wrap3"><p>Home</p></div>
+						</div>
+					</div>
+				</a>
+
+				<!-- <figure class="home">
+					<a href="index.html">
+					<img class="house" src="images/icon/bird-house.png" alt="">
+					<img class="tape" src="images/icon/tape.png" alt="">
+					<p></p>
+					</a>
+				</figure> -->
+
+			</section>
+
+		</div>
+	
+
+	<script
+ 	 src="https://code.jquery.com/jquery-3.2.1.min.js"
+ 	integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  	crossorigin="anonymous"></script>
+
+  	<script src="https://use.fontawesome.com/2345b8bde3.js"></script>
+
+  	<script src="collapse.js"></script>
+  	
+  	<script>
+  		// $(".collapse-menu a:nth-child(3) .lightLine").css("border","1px solid #BC0000");
+
+  		
+  	</script>
+</body>
+</html>

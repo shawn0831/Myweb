@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>繪圖</title>
+	<link rel="stylesheet" href="navbar.css">
+	<link rel="stylesheet" href="button.css">
+	<link rel="stylesheet" href="star-bg.css">
+
+	<style>
+		body{
+			background:url(images/background/abstract-1963838.jpg);
+			background-size:cover;
+
+		}
+		.container{
+			background:rgba(0,0,0,.5);
+			overflow:hidden;
+		}
+		.lightLine{
+			border:1px solid rgba(255,255,255,1);
+			width:100%;
+		}
+
+		section.section1{
+			width:80%;
+			margin:auto;
+			display:flex;
+			flex-wrap:wrap;
+			justify-content:center;
+			padding-top:100px;
+		}
+		@media screen and (max-width:368px){
+			section.section1{
+				width:100%;
+			}
+		}
+		.pic{
+			border:1px solid #ccc;
+			border-radius:5%;
+			margin:10px;
+			overflow:hidden;
+			cursor:pointer;
+			z-index:1;
+		}
+		.pic figure{
+			width:220px;
+			height:220px;
+			padding:10px;
+		}
+		@media screen and (min-width:1367px){
+			.pic figure{
+			width:270px;
+			height:270px;
+			}
+		}
+		/*@media screen and (max-width:368px){
+			.pic figure{
+			width:175px;
+			height:175px;
+			padding:10px;
+			}
+		}*/
+		.black-bg{
+			background:rgba(255,255,255,.3);
+		}
+		.white-bg{
+			background:rgba(255,255,255,.3);
+		}
+		.section1 img{
+			width:100%;
+			height:100%;
+			object-fit:contain;
+		}
+		.text{
+			background:rgba(0,0,0,.7);
+			color:#fff;
+			text-align:center;
+			line-height:30px;
+		}
+		@media screen and (min-width:1367px){
+			.text{
+			line-height:36px;
+			font-size:20px;
+			}
+		}
+
+
+		.pic-scale{
+			width:60vw;
+			height:70vh;
+			background:rgba(0,0,0,.9);
+			position:fixed;
+			top:50%;
+			left:50%;
+			margin:-35vh 0  0 -30vw;
+			text-align:center;
+			display:none;
+			border-radius:1%;
+			overflow:hidden;
+			z-index:3;
+		}
+		@media screen and (max-width:1366px){
+			.pic-scale{
+			width:80vw;
+			height:80vh;
+			margin:-40vh 0  0 -40vw;
+			}
+		}
+		@media screen and (max-width:768px){
+			.pic-scale{
+			width:100vw;
+			height:100vh;
+			margin:-50vh 0  0 -50vw;
+			}
+		}
+		
+		.pic-scale figure{
+			width:75%;
+			height:75%;
+			margin:25px auto 0;
+		}
+		.pic-scale img{
+			width:95%;
+			height:95%;
+			object-fit:contain;
+			margin:1.5% 2.5%;
+		}
+		.scale-text{
+			color:#fff;
+			font-size:24px;
+			background:rgba(0,0,0,1);
+			line-height:50px;
+			position:absolute;
+			bottom:0;
+			left:0;
+			width:100%;
+		}
+		.exit{
+			color:#FFF;
+			font-size:25px;
+			border:1px solid #fff;
+			border-radius:50%;
+			height:28px;
+			width:28px;
+			position:absolute;
+			top:10px;
+			right:10px;
+			opacity:.5;
+			cursor:pointer;
+		}
+		.exit:hover{
+			opacity:1;
+		}
+		i{
+			position:absolute;
+			top:45%;
+			color:#fff;
+			opacity:.5;
+			cursor:pointer;
+			padding:10px;
+		}
+		i:hover{
+			opacity:1;
+		}
+		.left-btn{
+			left:10px;
+		}
+		.right-btn{
+			right:10px;
+		}
+
+		.section2{
+			text-align:center;
+			padding:140px 0 80px;
+			display:flex;
+			justify-content:center;
+			filter:drop-shadow(0 0 5px #fff);
+		}
+		@media screen and (min-width:1367px){
+			.section2{
+			padding:140px 0 80px;
+			}
+		}
+
+		.ship{
+			width:100px;
+			/*filter:drop-shadow(0 0 5px #fff);	*/
+			text-align:center;
+			cursor:pointer;
+		}
+		.ship:hover p{
+			filter:drop-shadow(0 0 5px #fff);
+		}
+		.light{
+			filter:drop-shadow(0 0 5px #fff);
+		}
+		.ship img{
+			width:50px;
+			filter:drop-shadow(0 0 5px #fff);
+		}
+		.ship p{
+			color:#fff;
+			font-size:22px;
+		}
+		@media screen and (min-width:1681px){
+			.ship{
+				width:120px;
+			}
+			.ship img{
+			width:70px;
+			}
+		}
+		@media screen and (max-width:1366px){
+			.ship p{
+			font-size:18px;
+			}
+		}
+		.fall-star{
+			max-width:300px;
+			height:300px;
+			position:absolute;
+		}
+		.fall-star img{
+			width:100%;
+		}
+		@media screen and (max-width:600px){
+			.fall-star{
+				display:none;
+				animation-play-state:paused;
+			}
+		}
+		.fall1{
+			top:-200px;
+			left:600px;
+			transform:translate(0px,0px);
+			animation:fall 4s linear infinite;
+		}
+		.fall2{
+			top:-200px;
+			right:5vw;
+			animation:fall2 5s linear infinite 1s;
+		}
+		.fall3{
+			top:60vh;
+			right:0px;
+			animation:fall3 4s linear infinite;
+			/*animation-play-state:paused;*/
+		}
+
+		@keyframes fall{
+			to{
+				transform:translate(-2000px,1300px);
+			}
+		}
+		@keyframes fall2{
+			to{
+				transform:translate(-2000px,1500px);
+			}
+		}
+		@keyframes fall3{
+			to{
+				transform:translate(-2000px,1300px);
+			}
+
+	</style>
+</head>
+<body>
+		<div class="container">
+
+		<div class="fall-star fall1">
+			<img src="images/background/fall-star.png" alt="">
+		</div>
+		<!-- <div class="fall-star fall2">
+			<img src="images/background/fall-star.png" alt="">
+		</div> -->
+		<div class="fall-star fall3">
+			<img src="images/background/fall-star.png" alt="">
+		</div>
+
+			<header>
+				<figure class="brand">
+					<a href="index.html">
+						<img src="images/icon/logo.png" alt="Shawn的作品集" title="我是logo">
+					</a>
+				</figure>
+
+				<nav class="navbar">
+					<a href="pic.html">繪圖<div class="lightLine"></div></a>
+					<a href="photo.html">相片<div class="line"></div></a>
+					<a href="profile.html">個人資料<div class="line"></div></a>
+				</nav>
+
+				<nav class="collapse">
+					<span class="collapse-icon"></span>
+					<span class="collapse-icon"></span>
+					<span class="collapse-icon"></span>
+				</nav>
+
+				<div class="collapse-menu">
+						<a href="pic.html"><p>繪圖</p><div class="lightLine"></div></a>
+						<a href="photo.html"><p>相片</p></a>
+						<a href="profile.html"><p>個人資料</p></a>
+				</div>
+			</header>
+
+			<section class="section1">
+				<div class="pic">
+					<figure class="black-bg">
+						<img src="images/ai/0.png" alt="">
+					</figure>
+					<div class="text">圖標 - Html 5</div>
+				</div>
+
+				<div class="pic">
+					<figure class="black-bg">
+						<img src="images/ai/1.png" alt="">
+					</figure>
+					<div class="text">圖標 - Css 3</div>
+				</div>
+
+				<div class="pic">
+					<figure class="black-bg">
+						<img src="images/ai/2.png" alt="">
+					</figure>
+					<div class="text">圖標 - Css 3 Flex</div>
+				</div>
+
+				<div class="pic">
+					<figure class="black-bg">
+						<img src="images/ai/3.png" alt="">
+					</figure>
+					<div class="text">圖標 - Bootstrap</div>
+				</div>
+
+				<div class="pic">
+					<figure class="black-bg">
+						<img src="images/ai/4.png" alt="">
+					</figure>
+					<div class="text">圖標 - Javascript</div>
+				</div>
+
+				<div class="pic">
+					<figure class="black-bg">
+						<img src="images/ai/5.png" alt="">
+					</figure>
+					<div class="text">圖標 - JQuery</div>
+				</div>
+
+				<div class="pic">
+					<figure class="black-bg">
+						<img src="images/ai/6.png" alt="">
+					</figure>
+					<div class="text">圖標 - JQuery UI</div>
+				</div>
+
+				<div class="pic">
+					<figure class="black-bg">
+						<img src="images/ai/7.png" alt="">
+					</figure>
+					<div class="text">圖標 - AJAX</div>
+				</div>	
+
+				<div class="pic">
+					<figure class="black-bg">
+						<img src="images/ai/8.png" alt="">
+					</figure>
+					<div class="text">圖標 - PHP</div>
+				</div>
+
+				<div class="pic">
+					<figure class="black-bg">
+						<img src="images/ai/9.png" alt="">
+					</figure>
+					<div class="text">圖標 - My SQL</div>
+				</div>	
+
+				<div class="pic">
+					<figure class="black-bg">
+						<img src="images/ai/10.png" alt="">
+					</figure>
+					<div class="text">圖標 - 手機</div>
+				</div>
+
+				<div class="pic">
+					<figure class="black-bg">
+						<img src="images/ai/11.png" alt="">
+					</figure>
+					<div class="text">圖標 - 鳥屋</div>
+				</div>
+
+				<div class="pic">
+					<figure class="white-bg">
+						<img src="images/ai/12.png" alt="">
+					</figure>
+					<div class="text">圖標 - 小鳥</div>
+				</div>
+
+				<div class="pic">
+					<figure class="black-bg">
+						<img src="images/ai/13.png" alt="">
+					</figure>
+					<div class="text">漸變繪圖1</div>
+				</div>
+
+				<div class="pic">
+					<figure class="black-bg">
+						<img src="images/ai/14.png" alt="">
+					</figure>
+					<div class="text">漸變繪圖2</div>
+				</div>
+
+				<div class="pic">
+					<figure class="black-bg">
+						<img src="images/ai/15.png" alt="">
+					</figure>
+					<div class="text">漸變繪圖-花朵</div>
+				</div>						
+
+			</section>
+
+			<section class="section2">
+				<!-- <a href="pic.html" class="button-wrap0">
+					<div class="button button-wrap1">
+						<div class="button button-wrap2">
+							<div class="button button-wrap3"><p>Back to top</p></div>
+						</div>
+					</div>
+				</a> -->
+				<figure class="ship">
+					<span class="light"><img src="images/icon/eye2.png" alt=""></span>
+					<p>Back to top</p>
+				</figure>
+
+			</section>
+
+
+			<div class="pic-scale">
+				<figure>
+					<img src="images/ai/0.png" alt="">
+				</figure>
+				<p class="scale-text">圖標 - Html 5 </p>
+				<div class="exit">X</div>
+				<i class="fa fa-angle-left fa-4x left-btn" aria-hidden="true"></i>
+				<i class="fa fa-angle-right fa-4x right-btn" aria-hidden="true"></i>
+			</div>
+
+		</div>
+
+	<script
+ 	 src="https://code.jquery.com/jquery-3.2.1.min.js"
+ 	integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  	crossorigin="anonymous"></script>
+
+  	<script src="https://use.fontawesome.com/2345b8bde3.js"></script>
+
+
+  	<script src="collapse.js"></script>
+
+  <script>
+	var $picNum=0;
+	var $picIntro=""
+	var $picName=["圖標 - Html 5","圖標 - CSS 3","圖標 - CSS3 Flex","圖標 - Bootstrap","圖標 - Javascript","圖標 - JQuery","圖標 - JQuery UI","圖標 - AJAX","圖標 - PHP","圖標 - My SQL","圖標 - 手機","圖標 - 鳥屋","圖標 - 小鳥","漸變繪圖1","漸變繪圖2","漸變繪圖 - 花朵"];
+
+  	$(".pic").click(function(){
+
+  		$picNum= $(this).index();
+  		$picIntro="images/ai/"+$picNum+".png";
+
+  		
+  		$(".pic-scale img").attr("src",$picIntro);
+  		$(".pic-scale p").text($picName[$picNum]);
+
+  		$(".pic-scale").css("display","initial");
+
+  		$(".pic-scale figure").css("background","none");
+  		if($picNum==10||$picNum==12||$picNum==15){
+		$(".pic-scale figure").css("background","rgba(255,255,255,1)");
+	}
+
+  	})
+
+  	$(".exit").click(function(){
+  		$(".pic-scale").css("display","none");
+  	})
+
+
+
+  	$(".left-btn").click(function(){
+    	if($picNum>0){
+		  	$picNum-=1;
+		  	$picIntro="images/ai/"+$picNum+".png";
+		  	// console.log($picNum);
+		  		
+		  	$(".pic-scale img").attr("src",$picIntro);
+		  	$(".pic-scale p").text($picName[$picNum]);
+	  	}
+
+	  	$(".pic-scale figure").css("background","none");
+	  	if($picNum==10||$picNum==12||$picNum==15){
+		$(".pic-scale figure").css("background","rgba(255,255,255,1)");
+	}
+	});
+
+	$(".right-btn").click(function(){
+	  	if($picNum<15){
+		  	$picNum+=1;
+		  	$picIntro="images/ai/"+$picNum+".png";
+		  	// console.log($picNum);
+		  		
+		  	$(".pic-scale img").attr("src",$picIntro);
+		  	$(".pic-scale p").text($picName[$picNum]);
+	  	}
+
+	  	$(".pic-scale figure").css("background","none");
+	  	if($picNum==10||$picNum==12||$picNum==15){
+		$(".pic-scale figure").css("background","rgba(255,255,255,1)");
+	}
+	});
+
+	// $(".collapse-menu a:nth-child(1) .lightLine").css("border","1px solid #BC0000");
+   	
+
+	$(".ship").click(function(){
+
+	 	$("body,html").animate({
+	 		scrollTop:0
+	 	},1000);
+
+	 	return false;
+	})
+
+
+	// $(window).resize(function(){
+	// 	var width=$(window).width();
+	// console.log(width);
+	// 	if(width<568){
+	// 	$(".fall-star").css("animation-play-state","paused")
+	// 	}else{
+	// 		$(".fall-star").css("animation-play-state","running")
+	// 	}
+	// })
+	
+
+
+
+
+  </script>
+</body>
+</html>

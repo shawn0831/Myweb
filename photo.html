@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>相片</title>
+	<link rel="stylesheet" href="navbar.css">
+	<link rel="stylesheet" href="button.css">
+	<link rel="stylesheet" href="star-bg.css">
+	<style>
+		body{
+			background:url(images/background/abstract-1963838.jpg) right;
+			background-size:cover;
+		}
+		.container{
+			background:rgba(0,0,0,.5);
+			min-height:100vh;
+			z-index:1;
+			overflow:hidden;
+		}
+		.lightLine{
+			border:1px solid rgba(255,255,255,1);
+			width:100%;
+		}
+		.bg-ship{
+			width:90vw;
+			/*width:50vw;*/
+			margin:auto;
+			text-align:center;
+			transform:translateX(500px);
+			animation:shipMove 2s linear 1s;
+			animation-fill-mode:forwards;
+			/*z-index:1;*/
+		}
+		@media screen and (max-width:568px){
+			.bg-ship{
+			transform:translateX(200px);
+			animation:shipMove 2s linear 1s;
+			animation-fill-mode:forwards;
+			}
+		}
+		.bg-ship:hover{
+			filter:drop-shadow(0 0 40px #fff);
+			cursor:pointer;
+		}
+		.bg-ship img{
+			width:100%;
+		}
+		@keyframes shipMove{
+			to{
+				transform:translateX(0px);
+			}
+		}
+		.bg-ship p{
+			opacity:0;
+			color:#fff;
+			text-align:center;
+		/*	transition:1s linear;*/
+		}
+		/*.bg-ship:hover p{
+			opacity:1;
+		}*/
+		/*@media screen and (max-width:768px){
+			.bg-ship p{
+				opacity:1;
+			}
+		}*/
+		.section1{
+			width:80%;
+			max-height:0px;
+			position:relative;
+			top:-40px;
+			margin:0px auto 0;
+			display:flex;
+			flex-wrap:wrap;
+			justify-content:center;
+			/*padding:100px 0 0;*/
+			overflow:hidden;
+			/*transition:8s;*/
+			/*transform:translateY(-300px);*/
+		}
+		@media screen and (max-width:768px){
+			.section1{
+				top:-10px;
+			}
+		}
+		@media screen and (max-width:368px){
+			.section1{
+				width:100%;
+				top:-10px;
+			}
+		}
+		.pic{
+			border:1px solid #fff;
+			border-radius:5%;
+			margin:10px;
+			overflow:hidden;
+			cursor:pointer;
+			z-index:1;
+		}
+		.pic figure{
+			width:240px;
+			height:250px;
+		}
+		@media screen and (min-width:1367px){
+			.pic figure{
+			width:290px;
+			height:320px;
+			}
+		}
+		@media screen and (max-width:768px){
+			.pic figure{
+			width:270px;
+			height:300px;
+			}
+		}
+
+		.black-bg{
+			background:rgba(255,255,255,.1);
+		}
+		.section1 img{
+			width:100%;
+			height:100%;
+			object-fit:contain;
+		}
+		.text{
+			background:rgba(0,0,0,.7);
+			color:#fff;
+			text-align:center;
+			line-height:30px;
+		}
+		@media screen and (min-width:1367px){
+			.text{
+			line-height:36px;
+			font-size:20px;
+			}
+		}
+
+		.pic-scale{
+			width:80vw;
+			height:90vh;
+			background:rgba(0,0,0,.9);
+			position:fixed;
+			top:50%;
+			left:50%;
+			margin:-45vh 0  0 -40vw;
+			text-align:center;
+			display:none;
+			border-radius:1%;
+			overflow:hidden;
+			z-index:3;
+		}
+		@media screen and (max-width:1366px){
+			.pic-scale{
+			width:80vw;
+			height:80vh;
+			margin:-40vh 0  0 -40vw;
+			}
+		}
+		@media screen and (max-width:768px){
+			.pic-scale{
+			width:100vw;
+			height:100vh;
+			margin:-50vh 0  0 -50vw;
+			}
+		}
+		.pic-scale figure{
+			width:90%;
+			height:90%;
+			margin:20px auto 0;
+		}
+		.pic-scale img{
+			width:100%;
+			height:100%;
+			object-fit:contain;
+		}
+		.scale-text{
+			color:#fff;
+			font-size:24px;
+			background:rgba(0,0,0,1);
+			line-height:50px;
+			position:absolute;
+			bottom:0;
+			left:0;
+			width:100%;
+		}
+		.exit{
+			color:#FFF;
+			font-size:25px;
+			border:1px solid #fff;
+			border-radius:50%;
+			height:28px;
+			width:28px;
+			position:absolute;
+			top:10px;
+			right:10px;
+			opacity:.5;
+			cursor:pointer;
+		}
+		.exit:hover{
+			opacity:1;
+		}
+		i{
+			position:absolute;
+			top:45%;
+			color:#fff;
+			opacity:.5;
+			cursor:pointer;
+			padding:10px;
+		}
+		i:hover{
+			opacity:1;
+		}
+		.left-btn{
+			left:10px;
+		}
+		.right-btn{
+			right:10px;
+		}
+		.section2{
+			text-align:center;
+			padding:100px 0 80px;
+			display:flex;
+			justify-content:center;
+			align-items:center;
+			flex-direction:column;
+			position:relative;
+			/*transform:translateX(2000px);*/
+			opacity:0;
+			transition:1s 2s linear;
+			overflow:hidden;
+			filter:drop-shadow(0 0 5px #fff);
+			
+		}
+		@media screen and (min-width:1367px){
+			.section2{
+			padding:100px 0 80px;
+			}
+		}
+		.morePhoto{
+			position:absolute;
+			top:0;
+			color:white;
+			margin-bottom:20px;
+			filter:drop-shadow(0 0 5px #fff);
+			cursor:pointer;	
+		}
+		@media screen and (min-width:769px){
+			.morePhoto{
+			display:none;
+			}
+		}
+
+		.ship{
+			width:100px;
+			/*filter:drop-shadow(0 0 5px #fff);	*/
+			text-align:center;
+			cursor:pointer;
+		}
+		
+		.ship:hover p{
+			filter:drop-shadow(0 0 5px #fff);
+		}
+		.light{
+			filter:drop-shadow(0 0 5px #fff);
+		}
+		.ship img{
+			width:50px;
+			filter:drop-shadow(0 0 5px #fff);
+		}
+		.ship p{
+			color:#fff;
+			font-size:22px;
+		}
+		@media screen and (min-width:1681px){
+			.ship{
+				width:120px;
+			}
+			.ship img{
+			width:70px;
+			}
+		}
+		@media screen and (max-width:1366px){
+			.ship p{
+			font-size:18px;
+			}
+		}
+
+	</style>
+</head>
+
+<body>
+		<div class="container">
+
+<!-- ---------------------------page-top---------------------------- -->
+			<header>
+				<figure class="brand">
+					<a href="index.html">
+						<img src="images/icon/logo.png" alt="Shawn的作品集" title="我是logo">
+					</a>
+				</figure>
+
+				<nav class="navbar">
+					<a href="pic.html">繪圖<div class="line"></div></a>
+					<a href="photo.html">相片<div class="lightLine"></div></a>
+					<a href="profile.html">個人資料<div class="line"></div></a>
+				</nav>
+
+				<nav class="collapse">
+					<span class="collapse-icon"></span>
+					<span class="collapse-icon"></span>
+					<span class="collapse-icon"></span>
+				</nav>
+
+				<div class="collapse-menu">
+						<a href="pic.html"><p>繪圖</p></a>
+						<a href="photo.html"><p>相片</p><div class="lightLine"></div></a>
+						<a href="profile.html"><p>個人資料</p></a>
+				</div>
+				
+			</header>
+
+			<figure class="bg-ship">
+				<img src="images/icon/spaceship-2837606.png" alt="">
+				<p>點擊飛船<br>釋放相片</p>
+			</figure>
+
+<!-- ---------------------------sec1---------------------------- -->
+			<section id="mainSec" class="section1">
+				<!-- <div class="pic">
+					<figure class="black-bg">
+						<img src="images/photo/0.jpeg" alt="">
+					</figure>
+					<div class="text">2017 / 8月 攝於故宮</div>
+				</div> -->
+				<!-- 不可解除標記 -->
+
+				
+					
+			</section>
+
+<!-- ---------------------------sec2---------------------------- -->
+			<section class="section2">
+	
+				<p class="morePhoto">更多相片</p>
+
+				<figure class="ship">
+					<span class="light"><img src="images/icon/eye2.png" alt=""></span>
+					<p>Back to top</p>
+				</figure>
+
+			</section>
+
+<!-- ---------------------------pic-scale---------------------------- -->
+			<div class="pic-scale">
+				<figure>
+					<img src="images/photo/0.jpeg" alt="">
+				</figure>
+
+				<p class="scale-text"><!-- 圖標 - Html 5  --></p>
+
+				<div class="exit">X</div>
+
+				<i class="fa fa-angle-left fa-4x left-btn" aria-hidden="true"></i>
+				<i class="fa fa-angle-right fa-4x right-btn" aria-hidden="true"></i>
+
+			</div>
+
+		</div>
+
+	<script
+ 	 src="https://code.jquery.com/jquery-3.2.1.min.js"
+ 	integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  	crossorigin="anonymous"></script>
+
+  	<script src="https://use.fontawesome.com/2345b8bde3.js"></script>
+
+  	<script src="collapse.js"></script>
+
+  <script>
+	var $picNum=0;
+	var $picIntro=""
+	var $picName=["2017 / 9月 攝於故宮","2017 / 9月 攝於故宮","2017 / 9月 攝於故宮","2017 / 9月 攝於外雙溪","2017 / 9月 攝於故宮","2017 / 9月 攝於故宮","2017 / 9月 攝於故宮","2017 / 9月 攝於故宮","2017 / 8月 攝於淡水","Photoshop調色","Photoshop調色","Photoshop調色","2017 / 8月 攝於淡水","Photoshop調色","2017 / 7月 攝於台北藝術大學","2017 / 7月 攝於大湖公園","2017 / 7月 攝於台北市議會","Photoshop調色","2016 / 12月 攝於44南村","Photoshop調色","Photoshop調色"];
+	var $picTottal=$picName.length;
+		
+
+	for(i=0;i<$picTottal;i++){
+
+		$picIntro="<div class='pic'><figure class='black-bg'><img src='images/photo/"+i+".jpeg' alt=''></figure><div class='text'>"+$picName[i]+"</div></div>"
+
+		$("#mainSec").append($picIntro);
+	}
+
+	// --------------------------------pic_scale-----------------------------
+
+  	$(".pic").click(function(){
+
+  		$picNum= $(this).index();
+
+  		var width=$(window).width();
+  		
+  		if(width<769){
+  			$picIntro="images/photo/"+$picNum+".jpeg";
+  		}else{
+  			$picIntro="images/photo-scale/"+$picNum+".jpeg";
+  		}
+  		
+  		$(".pic-scale img").attr("src",$picIntro);
+  		$(".pic-scale p").text($picName[$picNum]);
+
+  		$(".pic-scale").css("display","initial");
+
+  	})
+
+  	$(".exit").click(function(){
+  		$(".pic-scale").css("display","none");
+  	})
+
+
+
+  	$(".left-btn").click(function(){
+    	if($picNum>0){
+		  	$picNum-=1;
+		  	$picIntro="images/photo-scale/"+$picNum+".jpeg";
+		  	// console.log($picNum);
+		  		
+		  	$(".pic-scale img").attr("src",$picIntro);
+		  	$(".pic-scale p").text($picName[$picNum]);
+	  	}
+	});
+
+	$(".right-btn").click(function(){
+	  	if($picNum+1<$picTottal){
+		  	$picNum+=1;
+		  	$picIntro="images/photo-scale/"+$picNum+".jpeg";
+		  	// console.log($picNum);
+		  		
+		  	$(".pic-scale img").attr("src",$picIntro);
+		  	$(".pic-scale p").text($picName[$picNum]);
+	  	}
+	});
+
+// --------------------------------bg-ship-----------------------------
+	setTimeout(function(){
+		$('.bg-ship p').animate({
+			opacity:"1"
+		},1000);
+	},1000);
+
+   	var width;
+   	var MH;
+	$(".bg-ship").click(function(){
+
+		width=$(window).width();
+
+		if(width>768){
+			MH=9000;
+			$(".section1").animate({
+		 		maxHeight:MH
+		 	},6000);
+
+			$(".section2").css({
+				opacity:"1"
+			});
+
+			$("body,html").animate({
+				scrollTop:8000
+			},5000);
+
+			$(".bg-ship p").css("display","none")
+		}else{
+			MH=4570;
+			$(".section1").animate({
+		 		maxHeight:MH
+		 	},0);
+
+			$(".section2").css({
+				opacity:"1"
+			});
+
+			$(".bg-ship p").css("display","none")
+
+			$('.morePhoto').css('display','initial');
+		}
+
+	})
+
+//-------------------------------page-bottom-----------------------------
+	$('.morePhoto').click(function(){
+		$(".section1").animate({
+	 		maxHeight:9000
+	 	},0);
+	 	$(this).css('display','none');
+	});
+
+	$(window).resize(function(){
+		if(MH==9000){
+			$('.morePhoto').css('display','none');
+		}
+	})
+
+	 $(".ship").click(function(){
+   		$("html").stop();
+
+	 	$("body,html").animate({
+	 		scrollTop:0
+	 	},1000);
+
+	 	return false;
+	})
+
+
+	
+
+
+
+
+  </script>
+</body>
+</html>
